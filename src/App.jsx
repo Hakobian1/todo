@@ -71,7 +71,7 @@ export function App() {
           initialValues={initialValueFormik}
           enableReinitialize={initialValueFormik}
           validationSchema={basicToDo}
-          onSubmit={({ title, description, color}) => {
+          onSubmit={({ title, description, color}, props) => {
 
             const data = { title, description, color };
 
@@ -92,7 +92,7 @@ export function App() {
                 .then(item => {
                   if (item) {
                     dispatch(createEntity(item));
-                    resetFormik()
+                    props.resetForm()
                   } else {
                     // todo show error
                   }
